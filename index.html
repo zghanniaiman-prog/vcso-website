@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phantom Trust | Enterprise vCSO & Cybersecurity Advisory</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#0b1329',
+                            900: '#060a17',
+                            950: '#03050d'
+                        },
+                        cyan: {
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            accent: '#00f0ff'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .glow-effect {
+            box-shadow: 0 0 25px -5px rgba(14, 165, 233, 0.3);
+        }
+        .glow-effect-lg {
+            box-shadow: 0 0 40px -5px rgba(0, 240, 255, 0.25);
+        }
+        .border-glow {
+            border-color: rgba(14, 165, 233, 0.4);
+        }
+        .glass-panel {
+            background: rgba(11, 19, 41, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .light .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+        }
+    </style>
+</head>
+<body class="bg-navy-950 text-slate-100 dark:bg-navy-950 dark:text-slate-100 light:bg-slate-50 light:text-slate-900 transition-colors duration-300 min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-white">
+
+    <!-- HEADER / NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-slate-800 dark:border-slate-800/80 light:border-slate-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-700 flex items-center justify-center text-navy-950 font-black text-xl shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid font-bold fa-shield-halved text-white text-xl"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-extrabold text-lg sm:text-xl tracking-tight text-white dark:text-white light:text-slate-900 group-hover:text-cyan-400 transition-colors">
+                            PHANTOM<span class="text-cyan-400">TRUST</span>
+                        </span>
+                        <span class="text-[10px] tracking-widest text-cyan-400 uppercase font-semibold -mt-1">vCSO & Advisory</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300 dark:text-slate-300 light:text-slate-600">
+                    <a href="#services" class="hover:text-cyan-400 transition-colors">Services</a>
+                    <a href="#calculator" class="hover:text-cyan-400 transition-colors">Risk Calculator</a>
+                    <a href="#audit" class="hover:text-cyan-400 transition-colors">Security Assessment</a>
+                    <a href="#pricing" class="hover:text-cyan-400 transition-colors">Engagement Models</a>
+                    <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
+                </nav>
+
+                <!-- Header Actions (Theme Toggle & CTA) -->
+                <div class="hidden sm:flex items-center gap-4">
+                    <!-- Theme Toggle Button -->
+                    <button id="themeToggle" class="p-2.5 rounded-lg bg-slate-900/80 dark:bg-slate-900/80 light:bg-slate-100 border border-slate-700 dark:border-slate-800 light:border-slate-300 text-slate-300 dark:text-slate-300 light:text-slate-700 hover:text-cyan-400 transition-all" aria-label="Toggle Theme">
+                        <i id="themeIcon" class="fa-solid fa-moon text-base"></i>
+                    </button>
+
+                    <!-- CTA Button -->
+                    <a href="#contact" class="relative inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white transition-all bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg hover:from-cyan-400 hover:to-blue-500 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 active:scale-95">
+                        <i class="fa-regular fa-calendar-check mr-2"></i>
+                        Schedule Strategy Call
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex md:hidden items-center gap-2">
+                    <button id="themeToggleMobile" class="p-2 rounded-lg bg-slate-800/80 text-slate-300 hover:text-cyan-400" aria-label="Toggle Theme Mobile">
+                        <i id="themeIconMobile" class="fa-solid fa-moon"></i>
+                    </button>
+                    <button id="mobileMenuBtn" class="p-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobileMenu" class="hidden md:hidden border-b border-slate-800 bg-navy-900/95 backdrop-blur-lg px-4 pt-2 pb-6 space-y-3 text-base font-medium">
+            <a href="#services" class="mobile-nav-link block py-2 px-3 rounded-md text-slate-300 hover:bg-slate-800 hover:text-cyan-400">Services</a>
+            <a href="#calculator" class="mobile-nav-link block py-2 px-3 rounded-md text-slate-300 hover:bg-slate-800 hover:text-cyan-400">Risk Calculator</a>
+            <a href="#audit" class="mobile-nav-link block py-2 px-3 rounded-md text-slate-300 hover:bg-slate-800 hover:text-cyan-400">Security Assessment</a>
+            <a href="#pricing" class="mobile-nav-link block py-2 px-3 rounded-md text-slate-300 hover:bg-slate-800 hover:text-cyan-400">Engagement Models</a>
+            <a href="#contact" class="mobile-nav-link block py-2 px-3 rounded-md text-slate-300 hover:bg-slate-800 hover:text-cyan-400">Contact</a>
+            <div class="pt-2">
+                <a href="#contact" class="w-full inline-flex items-center justify-center px-5 py-3 text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg shadow-lg">
+                    Schedule Strategy Call
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-12 pb-20 lg:pt-20 lg:pb-28 overflow-hidden">
+        <!-- Ambient Glowing Background Elements -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-[350px] h-[350px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Hero Left Content -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <!-- Badge -->
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-semibold uppercase tracking-wider">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                        Virtual CISO & Governance Advisory
+                    </div>
+
+                    <!-- Headline -->
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white dark:text-white light:text-slate-900 tracking-tight leading-[1.15]">
+                        Enterprise-Grade <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500">Cybersecurity Leadership</span> For Growth Companies
+                    </h1>
+
+                    <!-- Subtitle -->
+                    <p class="text-lg sm:text-xl text-slate-300 dark:text-slate-300 light:text-slate-600 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Bridge your security leadership gap without the $350k+ full-time executive cost. Achieve compliance, build resilience, and satisfy enterprise client audit requirements with expert fractional vCSO guidance.
+                    </p>
+
+                    <!-- Dual CTAs -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#contact" class="w-full sm:w-auto px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl hover:from-cyan-400 hover:to-blue-500 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all text-center">
+                            Book Initial Advisory
+                        </a>
+                        <a href="#calculator" class="w-full sm:w-auto px-8 py-4 text-base font-semibold text-slate-200 dark:text-slate-200 light:text-slate-800 bg-slate-900/80 dark:bg-slate-900/80 light:bg-slate-200 border border-slate-700 dark:border-slate-700 light:border-slate-300 hover:bg-slate-800 hover:border-cyan-500/50 rounded-xl transition-all text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-calculator text-cyan-400"></i>
+                            Calculate Security Risk
+                        </a>
+                    </div>
+
+                    <!-- Trust Stats & Badges Bar -->
+                    <div class="pt-8 border-t border-slate-800/80 dark:border-slate-800/80 light:border-slate-200">
+                        <p class="text-xs uppercase tracking-widest text-slate-400 mb-4 font-semibold">Framework Alignment & Audit Acceleration</p>
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-6 opacity-90">
+                            <div class="flex items-center gap-2 bg-slate-900/60 border border-slate-800 px-3.5 py-2 rounded-lg text-xs font-semibold text-slate-300">
+                                <i class="fa-solid fa-shield-cat text-cyan-400"></i> SOC 2 Type II
+                            </div>
+                            <div class="flex items-center gap-2 bg-slate-900/60 border border-slate-800 px-3.5 py-2 rounded-lg text-xs font-semibold text-slate-300">
+                                <i class="fa-solid fa-award text-cyan-400"></i> ISO 27001
+                            </div>
+                            <div class="flex items-center gap-2 bg-slate-900/60 border border-slate-800 px-3.5 py-2 rounded-lg text-xs font-semibold text-slate-300">
+                                <i class="fa-solid fa-building-columns text-cyan-400"></i> NIST CSF 2.0
+                            </div>
+                            <div class="flex items-center gap-2 bg-slate-900/60 border border-slate-800 px-3.5 py-2 rounded-lg text-xs font-semibold text-slate-300">
+                                <i class="fa-solid fa-lock text-cyan-400"></i> PIPEDA & GDPR
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Interactive Preview Card -->
+                <div class="lg:col-span-5 relative">
+                    <div class="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-2xl glow-effect relative overflow-hidden">
+                        <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-800">
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                <span class="text-xs font-mono text-slate-400 ml-2">PhantomTrust Security Status</span>
+                            </div>
+                            <span class="text-xs font-semibold text-cyan-400 bg-cyan-950/60 border border-cyan-800 px-2.5 py-1 rounded">Live Dashboard</span>
+                        </div>
+
+                        <!-- Live Metrics Preview -->
+                        <div class="space-y-4">
+                            <div class="bg-navy-950 p-4 rounded-xl border border-slate-800 flex items-center justify-between">
+                                <div>
+                                    <div class="text-xs text-slate-400">Governance & Audit Readiness</div>
+                                    <div class="text-xl font-bold text-emerald-400 flex items-center gap-2">
+                                        94% <span class="text-xs text-slate-400 font-normal">Audit Ready</span>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-circle-check text-emerald-400 text-2xl"></i>
+                            </div>
+
+                            <div class="bg-navy-950 p-4 rounded-xl border border-slate-800 flex items-center justify-between">
+                                <div>
+                                    <div class="text-xs text-slate-400">Threat & Vulnerability Index</div>
+                                    <div class="text-xl font-bold text-cyan-400 flex items-center gap-2">
+                                        Low Risk <span class="text-xs text-slate-400 font-normal">Continuous Monitoring</span>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-shield-virus text-cyan-400 text-2xl"></i>
+                            </div>
+
+                            <div class="bg-navy-950 p-4 rounded-xl border border-slate-800 flex items-center justify-between">
+                                <div>
+                                    <div class="text-xs text-slate-400">Active vCSO Engagement</div>
+                                    <div class="text-xl font-bold text-white flex items-center gap-2">
+                                        Strategic Oversight
+                                    </div>
+                                </div>
+                                <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 text-xs font-bold rounded-md">Fractional Executive</span>
+                            </div>
+
+                            <div class="p-3 rounded-lg bg-slate-800/40 border border-slate-700/50 text-xs text-slate-300 flex items-center gap-3">
+                                <i class="fa-solid fa-user-shield text-cyan-400 text-lg"></i>
+                                <span>"Phantom Trust helped us achieve SOC 2 compliance in under 90 days."</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE SECURITY RISK & vCSO NEED CALCULATOR -->
+    <section id="calculator" class="py-20 bg-navy-900/60 border-y border-slate-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest">Interactive Estimation Tool</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white dark:text-white light:text-slate-900 mt-2">
+                    vCSO Need & Security Risk Calculator
+                </h2>
+                <p class="text-slate-400 mt-3 text-base">
+                    Select your organizational parameters below to estimate your compliance risk score and ideal vCSO advisory model.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Calculator Inputs -->
+                <div class="lg:col-span-7 bg-navy-950/80 p-6 sm:p-8 rounded-2xl border border-slate-800 space-y-6">
+                    <!-- Company Size -->
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-300 mb-2">Company Size (Employees)</label>
+                        <select id="calcEmployees" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-slate-200 focus:outline-none focus:border-cyan-400 transition-colors">
+                            <option value="1">1 - 25 Employees</option>
+                            <option value="2" selected>26 - 100 Employees</option>
+                            <option value="3">101 - 250 Employees</option>
+                            <option value="4">250+ Employees</option>
+                        </select>
+                    </div>
+
+                    <!-- Compliance Standards Needed -->
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-300 mb-2">Required Frameworks / Regulatory Standards</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <label class="flex items-center gap-2 p-3 bg-slate-900 border border-slate-800 rounded-lg cursor-pointer hover:border-slate-700">
+                                <input type="checkbox" class="calc-compliance form-checkbox text-cyan-500 rounded" value="soc2" checked>
+                                <span class="text-xs font-medium text-slate-300">SOC 2</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-3 bg-slate-900 border border-slate-800 rounded-lg cursor-pointer hover:border-slate-700">
+                                <input type="checkbox" class="calc-compliance form-checkbox text-cyan-500 rounded" value="iso">
+                                <span class="text-xs font-medium text-slate-300">ISO 27001</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-3 bg-slate-900 border border-slate-800 rounded-lg cursor-pointer hover:border-slate-700">
+                                <input type="checkbox" class="calc-compliance form-checkbox text-cyan-500 rounded" value="hipaa">
+                                <span class="text-xs font-medium text-slate-300">HIPAA</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-3 bg-slate-900 border border-slate-800 rounded-lg cursor-pointer hover:border-slate-700">
+                                <input type="checkbox" class="calc-compliance form-checkbox text-cyan-500 rounded" value="pci">
+                                <span class="text-xs font-medium text-slate-300">PCI-DSS / PIPEDA</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Current Security Posture -->
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-300 mb-2">Current Security Maturity</label>
+                        <select id="calcMaturity" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-slate-200 focus:outline-none focus:border-cyan-400 transition-colors">
+                            <option value="basic">Basic (Passable Antivirus, standard email, no formal policies)</option>
+                            <option value="moderate" selected>Moderate (MFA deployed, basic policies, no continuous monitoring)</option>
+                            <option value="advanced">Advanced (EDR deployed, formal policies, upcoming audit mandate)</option>
+                        </select>
+                    </div>
+
+                    <!-- Annual IT/Cyber Budget -->
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-300 mb-2">Estimated Annual Cyber Budget</label>
+                        <select id="calcBudget" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-slate-200 focus:outline-none focus:border-cyan-400 transition-colors">
+                            <option value="low">Under $50k / year</option>
+                            <option value="mid" selected>$50k - $150k / year</option>
+                            <option value="high">$150k+ / year</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Calculator Output Card -->
+                <div class="lg:col-span-5 bg-gradient-to-br from-slate-900 to-navy-950 p-6 sm:p-8 rounded-2xl border border-cyan-500/30 glow-effect space-y-6">
+                    <h3 class="text-xl font-bold text-white flex items-center justify-between">
+                        <span>Calculated Risk Profile</span>
+                        <i class="fa-solid fa-chart-pie text-cyan-400"></i>
+                    </h3>
+
+                    <!-- Risk Level Bar -->
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-2">
+                            <span class="text-slate-400">Compliance & Exposure Index</span>
+                            <span id="riskLabel" class="text-amber-400 font-bold">MODERATE RISK</span>
+                        </div>
+                        <div class="w-full h-3 bg-slate-800 rounded-full overflow-hidden">
+                            <div id="riskProgressBar" class="h-full bg-gradient-to-r from-emerald-400 via-amber-400 to-red-500 transition-all duration-500" style="width: 65%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Calculated Results -->
+                    <div class="space-y-4 pt-4 border-t border-slate-800">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-slate-400">Recommended Engagement:</span>
+                            <span id="recommendedModel" class="font-bold text-cyan-400">Fractional vCSO (15 hrs/mo)</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-slate-400">Audit Readiness Velocity:</span>
+                            <span id="auditTime" class="font-bold text-white">60 - 90 Days</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-slate-400">Est. Full-Time CISO Savings:</span>
+                            <span id="costSavings" class="font-bold text-emerald-400">~$210,000 / year</span>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Recommendation Box -->
+                    <div id="calcRecommendationText" class="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-xs text-slate-300 leading-relaxed">
+                        Your profile indicates an active need for external governance oversight to pass vendor audits and streamline policy enforcement.
+                    </div>
+
+                    <a href="#contact" class="block w-full text-center py-3.5 px-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold text-sm shadow-md transition-all">
+                        Request Customized Governance Plan
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE vCSO ADVISORY SERVICES GRID -->
+    <section id="services" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest">Our Advisory Pillars</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white dark:text-white light:text-slate-900 mt-2">
+                Core vCSO & Cyber Advisory Services
+            </h2>
+            <p class="text-slate-400 mt-3 text-base">
+                Tailored executive security leadership designed to reduce business risk, satisfy board demands, and unlock sales pipeline velocity.
+            </p>
+        </div>
+
+        <!-- Interactive Service Tabs Header -->
+        <div class="flex flex-wrap items-center justify-center gap-2 mb-8" id="servicesTabContainer">
+            <button data-tab="tab-strategic" class="service-tab-btn active px-5 py-2.5 rounded-lg text-sm font-semibold border transition-all bg-cyan-500/20 text-cyan-400 border-cyan-500/50">
+                Strategic Leadership
+            </button>
+            <button data-tab="tab-compliance" class="service-tab-btn px-5 py-2.5 rounded-lg text-sm font-semibold border border-slate-800 bg-slate-900 text-slate-400 hover:text-white hover:border-slate-700 transition-all">
+                Regulatory Compliance
+            </button>
+            <button data-tab="tab-incident" class="service-tab-btn px-5 py-2.5 rounded-lg text-sm font-semibold border border-slate-800 bg-slate-900 text-slate-400 hover:text-white hover:border-slate-700 transition-all">
+                Incident Resilience
+            </button>
+            <button data-tab="tab-vendor" class="service-tab-btn px-5 py-2.5 rounded-lg text-sm font-semibold border border-slate-800 bg-slate-900 text-slate-400 hover:text-white hover:border-slate-700 transition-all">
+                Vendor Risk Management
+            </button>
+            <button data-tab="tab-vcio" class="service-tab-btn px-5 py-2.5 rounded-lg text-sm font-semibold border border-slate-800 bg-slate-900 text-slate-400 hover:text-white hover:border-slate-700 transition-all">
+                vCIO & Governance
+            </button>
+        </div>
+
+        <!-- Tab Content Panels -->
+        <div class="bg-navy-900/60 border border-slate-800 rounded-2xl p-6 sm:p-10">
+            <!-- Strategic Leadership -->
+            <div id="tab-strategic" class="service-panel grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl">
+                        <i class="fa-solid fa-chess-king"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">Strategic Cybersecurity Leadership & Roadmap</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Establish an actionable multi-year cybersecurity roadmap aligned directly with your revenue targets. We translate complex security threats into executive business metrics that satisfy your Board of Directors, investors, and enterprise prospects.
+                    </p>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Board-level risk reporting & presentation frameworks</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Annual cyber budget optimization & tool rationalization</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Security team mentorship & culture transformation</li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-5 bg-slate-900 p-6 rounded-xl border border-slate-800">
+                    <h4 class="text-sm font-semibold text-cyan-400 mb-3 uppercase tracking-wider">Key Deliverable</h4>
+                    <p class="text-xs text-slate-300 mb-4">Complete 3-Year Security Architecture Roadmap including prioritized risk mitigation tasks, tool selection guides, and quarterly executive milestones.</p>
+                    <a href="#contact" class="inline-flex items-center text-xs font-bold text-cyan-400 hover:underline">Discuss Strategic Advisory <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+
+            <!-- Regulatory Compliance -->
+            <div id="tab-compliance" class="service-panel hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">Regulatory Compliance & Audit Readiness</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Fast-track your audit readiness for SOC 2 Type II, ISO 27001, PIPEDA, HIPAA, and NIST CSF. We eliminate audit friction, author policy frameworks, and work directly alongside your external auditors to guarantee success.
+                    </p>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Automated policy documentation & evidence gathering</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> End-to-end audit defense and auditor negotiation</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Continuous monitoring program design</li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-5 bg-slate-900 p-6 rounded-xl border border-slate-800">
+                    <h4 class="text-sm font-semibold text-cyan-400 mb-3 uppercase tracking-wider">Key Deliverable</h4>
+                    <p class="text-xs text-slate-300 mb-4">Turnkey Compliance Operating System: Pre-written SOC 2/ISO policy set, evidence repository layout, and gap remediation action matrix.</p>
+                    <a href="#contact" class="inline-flex items-center text-xs font-bold text-cyan-400 hover:underline">Prepare For Audit <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+
+            <!-- Incident Resilience -->
+            <div id="tab-incident" class="service-panel hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl">
+                        <i class="fa-solid fa-biohazard"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">Incident Response & Cyber Resilience Planning</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Ensure business continuity when high-severity threats arise. We construct bespoke Incident Response Plans (IRP), conduct tabletop simulations with your executive team, and act as your command lead during critical incidents.
+                    </p>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Executive Tabletop Exercises & Ransomware Simulations</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Cyber Insurance policy alignment & retainer oversight</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Business Continuity & Ransomware Recovery protocols</li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-5 bg-slate-900 p-6 rounded-xl border border-slate-800">
+                    <h4 class="text-sm font-semibold text-cyan-400 mb-3 uppercase tracking-wider">Key Deliverable</h4>
+                    <p class="text-xs text-slate-300 mb-4">Customized Incident Playbook with executive call trees, legal counsel integration scripts, and PR communication templates.</p>
+                    <a href="#contact" class="inline-flex items-center text-xs font-bold text-cyan-400 hover:underline">Build Resilience Plan <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+
+            <!-- Vendor Risk -->
+            <div id="tab-vendor" class="service-panel hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">Third-Party Vendor Risk Management (TPRM)</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Protect your enterprise from supply chain vulnerabilities. We audit your SaaS stack, evaluate third-party vendor security posture, and manage incoming customer vendor risk questionnaires so your sales deals close faster.
+                    </p>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Accelerated responses to enterprise customer security questionnaires</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> SaaS application risk scoring & shadow IT discovery</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Vendor SOC report review & contract security addendums</li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-5 bg-slate-900 p-6 rounded-xl border border-slate-800">
+                    <h4 class="text-sm font-semibold text-cyan-400 mb-3 uppercase tracking-wider">Key Deliverable</h4>
+                    <p class="text-xs text-slate-300 mb-4">Security Questionnaire Automation Bank & Tiered Third-Party Vendor Risk Matrix.</p>
+                    <a href="#contact" class="inline-flex items-center text-xs font-bold text-cyan-400 hover:underline">Streamline Vendor Reviews <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+
+            <!-- vCIO & Governance -->
+            <div id="tab-vcio" class="service-panel hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl">
+                        <i class="fa-solid fa-server"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">Virtual CIO & Infrastructure Governance</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Align your IT architecture with secure cloud-native practices. Our vCIO services ensure your cloud infrastructure (AWS/Azure/GCP), identity providers, and endpoints are securely architected and optimized for cost.
+                    </p>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Cloud Architecture & Zero-Trust Access governance</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> IT Service Management (ITSM) & MSP vendor oversight</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Identity & Access Management (IAM / Identity Security)</li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-5 bg-slate-900 p-6 rounded-xl border border-slate-800">
+                    <h4 class="text-sm font-semibold text-cyan-400 mb-3 uppercase tracking-wider">Key Deliverable</h4>
+                    <p class="text-xs text-slate-300 mb-4">Zero Trust Governance Blueprint & Cloud Infrastructure Security Audit Report.</p>
+                    <a href="#contact" class="inline-flex items-center text-xs font-bold text-cyan-400 hover:underline">Upgrade Governance <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE SECURITY ASSESSMENT CHECKLIST -->
+    <section id="audit" class="py-20 bg-navy-900/40 border-y border-slate-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest">Self-Assessment Tool</span>
+                <h2 class="text-3xl font-extrabold text-white dark:text-white light:text-slate-900 mt-2">
+                    Security Posture Audit Preview
+                </h2>
+                <p class="text-slate-400 text-sm mt-2">
+                    Check off your active security controls below to calculate your instant maturity score.
+                </p>
+            </div>
+
+            <div class="bg-navy-950 p-6 sm:p-10 rounded-2xl border border-slate-800 shadow-xl space-y-8">
+                <!-- Checklist Controls -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="auditChecklist">
+                    <!-- Item 1 -->
+                    <label class="audit-item p-4 rounded-xl border border-slate-800 bg-slate-900/60 flex items-start gap-3 cursor-pointer hover:border-slate-700 transition-all">
+                        <input type="checkbox" data-score="20" class="audit-checkbox mt-1 form-checkbox h-5 w-5 text-cyan-500 rounded border-slate-700 bg-slate-900">
+                        <div>
+                            <div class="text-sm font-semibold text-white">Enforced MFA Across All Systems</div>
+                            <div class="text-xs text-slate-400 mt-0.5">Hardware token or push-based MFA enforced for email, VPN, and SSO.</div>
+                        </div>
+                    </label>
+
+                    <!-- Item 2 -->
+                    <label class="audit-item p-4 rounded-xl border border-slate-800 bg-slate-900/60 flex items-start gap-3 cursor-pointer hover:border-slate-700 transition-all">
+                        <input type="checkbox" data-score="20" class="audit-checkbox mt-1 form-checkbox h-5 w-5 text-cyan-500 rounded border-slate-700 bg-slate-900">
+                        <div>
+                            <div class="text-sm font-semibold text-white">EDR / Endpoint Detection & Response</div>
+                            <div class="text-xs text-slate-400 mt-0.5">Centralized next-gen anti-malware with 24/7 telemetry on all laptops/servers.</div>
+                        </div>
+                    </label>
+
+                    <!-- Item 3 -->
+                    <label class="audit-item p-4 rounded-xl border border-slate-800 bg-slate-900/60 flex items-start gap-3 cursor-pointer hover:border-slate-700 transition-all">
+                        <input type="checkbox" data-score="20" class="audit-checkbox mt-1 form-checkbox h-5 w-5 text-cyan-500 rounded border-slate-700 bg-slate-900">
+                        <div>
+                            <div class="text-sm font-semibold text-white">Immutable / Air-Gapped Backups</div>
+                            <div class="text-xs text-slate-400 mt-0.5">Isolated, ransomware-proof backups tested quarterly for quick restore.</div>
+                        </div>
+                    </label>
+
+                    <!-- Item 4 -->
+                    <label class="audit-item p-4 rounded-xl border border-slate-800 bg-slate-900/60 flex items-start gap-3 cursor-pointer hover:border-slate-700 transition-all">
+                        <input type="checkbox" data-score="20" class="audit-checkbox mt-1 form-checkbox h-5 w-5 text-cyan-500 rounded border-slate-700 bg-slate-900">
+                        <div>
+                            <div class="text-sm font-semibold text-white">Continuous Employee Security Awareness</div>
+                            <div class="text-xs text-slate-400 mt-0.5">Monthly simulated phishing tests and mandatory security onboarding.</div>
+                        </div>
+                    </label>
+
+                    <!-- Item 5 -->
+                    <label class="audit-item p-4 rounded-xl border border-slate-800 bg-slate-900/60 flex items-start gap-3 cursor-pointer hover:border-slate-700 transition-all">
+                        <input type="checkbox" data-score="20" class="audit-checkbox mt-1 form-checkbox h-5 w-5 text-cyan-500 rounded border-slate-700 bg-slate-900">
+                        <div>
+                            <div class="text-sm font-semibold text-white">Centralized SIEM & Log Retention</div>
+                            <div class="text-xs text-slate-400 mt-0.5">Security event logs aggregated and analyzed for anomaly detection.</div>
+                        </div>
+                    </label>
+
+                    <!-- Item 6 -->
+                    <label class="audit-item p-4 rounded-xl border border-slate-800 bg-slate-900/60 flex items-start gap-3 cursor-pointer hover:border-slate-700 transition-all">
+                        <input type="checkbox" data-score="20" class="audit-checkbox mt-1 form-checkbox h-5 w-5 text-cyan-500 rounded border-slate-700 bg-slate-900">
+                        <div>
+                            <div class="text-sm font-semibold text-white">Formal Vendor Risk Assessment</div>
+                            <div class="text-xs text-slate-400 mt-0.5">Documented vetting process for third-party tools & sub-processors.</div>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Audit Live Calculation Score Board -->
+                <div class="pt-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="flex items-center gap-4">
+                        <div class="relative w-20 h-20 flex items-center justify-center bg-slate-900 rounded-full border-2 border-cyan-500">
+                            <span id="auditScoreText" class="text-2xl font-black text-cyan-400">0%</span>
+                        </div>
+                        <div>
+                            <div class="text-xs text-slate-400 uppercase tracking-widest font-semibold">Security Maturity Score</div>
+                            <div id="auditMaturityRating" class="text-lg font-bold text-amber-400">Critical Gaps Identified</div>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="w-full md:w-auto px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-sm font-semibold transition-all border border-slate-700 flex items-center justify-center gap-2">
+                        <span>Get Full Audit Report From vCSO</span>
+                        <i class="fa-solid fa-file-shield text-cyan-400"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENGAGEMENT MODELS / PRICING TIERS -->
+    <section id="pricing" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest">Flexible Engagement Models</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white dark:text-white light:text-slate-900 mt-2">
+                Transparent Advisory Tiering
+            </h2>
+            <p class="text-slate-400 mt-3 text-base">
+                Scalable cybersecurity executive packages built to match your growth phase and compliance deadlines.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Tier 1 -->
+            <div class="bg-navy-900/60 border border-slate-800 rounded-2xl p-8 flex flex-col justify-between hover:border-slate-700 transition-all">
+                <div>
+                    <div class="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-2">Focused Oversight</div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Strategic Advisory</h3>
+                    <p class="text-xs text-slate-400 mb-6">Ideal for startups requiring high-level security leadership and quarterly strategy reviews.</p>
+
+                    <div class="mb-6">
+                        <span class="text-3xl font-extrabold text-white">$2,500</span>
+                        <span class="text-xs text-slate-400"> / month</span>
+                    </div>
+
+                    <ul class="space-y-3 text-xs text-slate-300 mb-8">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Up to 10 hours/month executive guidance</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Monthly security roadmap updates</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Basic vendor questionnaire support</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Annual risk assessment review</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="w-full text-center py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs transition-all border border-slate-700">
+                    Select Plan
+                </a>
+            </div>
+
+            <!-- Tier 2 (Highlighted) -->
+            <div class="bg-gradient-to-b from-slate-900 to-navy-950 border-2 border-cyan-500 rounded-2xl p-8 flex flex-col justify-between relative glow-effect">
+                <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-cyan-500 text-navy-950 font-extrabold text-[10px] uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
+                    Most Popular
+                </div>
+
+                <div>
+                    <div class="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-2">Active Leadership</div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Fractional vCSO</h3>
+                    <p class="text-xs text-slate-400 mb-6">Designed for scale-ups aiming for SOC 2 / ISO 27001 certification and active audit defense.</p>
+
+                    <div class="mb-6">
+                        <span class="text-3xl font-extrabold text-white">$5,500</span>
+                        <span class="text-xs text-slate-400"> / month</span>
+                    </div>
+
+                    <ul class="space-y-3 text-xs text-slate-300 mb-8">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Up to 25 hours/month dedicated executive time</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Turnkey SOC 2 / ISO 27001 Audit Defense</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Direct Client & Prospect Security Questionnaire support</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Board-level security reporting</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Executive Incident Response lead</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="w-full text-center py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold text-xs transition-all shadow-lg shadow-cyan-500/20">
+                    Get Started
+                </a>
+            </div>
+
+            <!-- Tier 3 -->
+            <div class="bg-navy-900/60 border border-slate-800 rounded-2xl p-8 flex flex-col justify-between hover:border-slate-700 transition-all">
+                <div>
+                    <div class="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-2">Complete Governance</div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Enterprise Cyber Governance</h3>
+                    <p class="text-xs text-slate-400 mb-6">Full cyber & IT governance program for mid-market organizations with complex compliance needs.</p>
+
+                    <div class="mb-6">
+                        <span class="text-3xl font-extrabold text-white">$9,500</span>
+                        <span class="text-xs text-slate-400"> / month</span>
+                    </div>
+
+                    <ul class="space-y-3 text-xs text-slate-300 mb-8">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Continuous vCSO & vCIO Leadership</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Multi-framework alignment (NIST, ISO, HIPAA, PIPEDA)</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Continuous Third-Party Vendor Risk Auditing</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Quarterly executive tabletop exercises</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Unlimited questionnaire handling</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="w-full text-center py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs transition-all border border-slate-700">
+                    Contact Sales
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & CONSULTATION SCHEDULING FORM -->
+    <section id="contact" class="py-20 bg-navy-900/80 border-t border-slate-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Contact Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest">Connect With Leadership</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white dark:text-white light:text-slate-900">
+                        Schedule Your vCSO Strategy Session
+                    </h2>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Speak directly with a Senior vCSO Principal to evaluate your security posture, audit timeline, and governance strategy.
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-cyan-400">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400">Advisory Inquiries</div>
+                                <div class="text-sm font-semibold text-white">advisory@phantomtrust.com</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-cyan-400">
+                                <i class="fa-solid fa-shield"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400">Confidential NDA Guarantee</div>
+                                <div class="text-sm font-semibold text-white">Mutual NDA execution prior to deep technical discovery.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Card -->
+                <div class="lg:col-span-7 bg-navy-950 p-6 sm:p-10 rounded-2xl border border-slate-800 shadow-2xl">
+                    <form id="consultationForm" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Your Full Name *</label>
+                                <input type="text" required class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-400" placeholder="Jane Doe">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Company Name *</label>
+                                <input type="text" required class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-400" placeholder="Acme Technologies Inc.">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Work Email *</label>
+                                <input type="email" required class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-400" placeholder="jane@acme.com">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Phone Number</label>
+                                <input type="tel" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-400" placeholder="+1 (555) 000-0000">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Primary Cybersecurity Concern / Compliance Timeline</label>
+                            <select class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-400">
+                                <option>SOC 2 / ISO 27001 Audit Deadline Approaching</option>
+                                <option>Customer Security Questionnaire Support Needed</option>
+                                <option>Need Fractional Executive Leadership (vCSO)</option>
+                                <option>Incident Response & Ransomware Resilience</option>
+                                <option>General Security Posture Review</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Additional Notes / System Context</label>
+                            <textarea rows="3" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-400" placeholder="Describe your current setup or immediate deadlines..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-sm rounded-xl shadow-lg shadow-cyan-500/25 transition-all">
+                            Submit Advisory Request
+                        </button>
+
+                        <div id="formStatusMessage" class="hidden p-3 rounded-lg text-xs font-semibold text-center mt-2"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-950 border-t border-slate-800 text-slate-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <!-- Brand Info -->
+                <div class="md:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded bg-cyan-500 flex items-center justify-center text-navy-950 font-bold">
+                            <i class="fa-solid fa-shield-halved text-white"></i>
+                        </div>
+                        <span class="font-extrabold text-white text-lg tracking-tight">PHANTOM<span class="text-cyan-400">TRUST</span></span>
+                    </div>
+                    <p class="text-xs text-slate-400 max-w-sm leading-relaxed">
+                        Enterprise virtual Chief Information Security Officer (vCSO) and cybersecurity advisory firm delivering strategic governance, compliance acceleration, and cyber resilience.
+                    </p>
+                </div>
+
+                <!-- Navigation -->
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-3">Quick Navigation</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#services" class="hover:text-cyan-400 transition-colors">Services</a></li>
+                        <li><a href="#calculator" class="hover:text-cyan-400 transition-colors">Risk Calculator</a></li>
+                        <li><a href="#audit" class="hover:text-cyan-400 transition-colors">Security Assessment</a></li>
+                        <li><a href="#pricing" class="hover:text-cyan-400 transition-colors">Engagement Tiers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Frameworks -->
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-3">Framework Compliance</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><span class="hover:text-cyan-400 transition-colors">SOC 2 Type II Readiness</span></li>
+                        <li><span class="hover:text-cyan-400 transition-colors">ISO 27001 Implementation</span></li>
+                        <li><span class="hover:text-cyan-400 transition-colors">NIST CSF Governance</span></li>
+                        <li><span class="hover:text-cyan-400 transition-colors">PIPEDA & GDPR Privacy</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <div>
+                    &copy; 2026 Phantom Trust Cybersecurity Advisory Inc. All rights reserved.
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-slate-300">Privacy Policy</a>
+                    <a href="#" class="hover:text-slate-300">Terms of Service</a>
+                    <a href="#" class="hover:text-slate-300">Responsible Disclosure</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+    <script>
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeToggleMobileBtn = document.getElementById('themeToggleMobile');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeIconMobile = document.getElementById('themeIconMobile');
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+                themeIcon.className = 'fa-solid fa-sun text-amber-500';
+                if (themeIconMobile) themeIconMobile.className = 'fa-solid fa-sun text-amber-500';
+            } else {
+                document.documentElement.classList.remove('light');
+                document.documentElement.classList.add('dark');
+                themeIcon.className = 'fa-solid fa-moon text-slate-300';
+                if (themeIconMobile) themeIconMobile.className = 'fa-solid fa-moon text-slate-300';
+            }
+        }
+
+        if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+        if (themeToggleMobileBtn) themeToggleMobileBtn.addEventListener('click', toggleTheme);
+
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+
+        // Services Tab Switching Logic
+        const tabButtons = document.querySelectorAll('.service-tab-btn');
+        const tabPanels = document.querySelectorAll('.service-panel');
+
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetTab = btn.getAttribute('data-tab');
+
+                // Update Button Styles
+                tabButtons.forEach(b => {
+                    b.classList.remove('active', 'bg-cyan-500/20', 'text-cyan-400', 'border-cyan-500/50');
+                    b.classList.add('bg-slate-900', 'text-slate-400', 'border-slate-800');
+                });
+
+                btn.classList.add('active', 'bg-cyan-500/20', 'text-cyan-400', 'border-cyan-500/50');
+                btn.classList.remove('bg-slate-900', 'text-slate-400', 'border-slate-800');
+
+                // Update Panels
+                tabPanels.forEach(panel => {
+                    if (panel.id === targetTab) {
+                        panel.classList.remove('hidden');
+                    } else {
+                        panel.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // vCSO Need & Risk Calculator Logic
+        const calcEmployees = document.getElementById('calcEmployees');
+        const calcMaturity = document.getElementById('calcMaturity');
+        const calcBudget = document.getElementById('calcBudget');
+        const complianceCheckboxes = document.querySelectorAll('.calc-compliance');
+
+        const riskProgressBar = document.getElementById('riskProgressBar');
+        const riskLabel = document.getElementById('riskLabel');
+        const recommendedModel = document.getElementById('recommendedModel');
+        const auditTime = document.getElementById('auditTime');
+        const costSavings = document.getElementById('costSavings');
+        const calcRecommendationText = document.getElementById('calcRecommendationText');
+
+        function updateRiskCalculator() {
+            let riskScore = 40; // Base score
+
+            // Add points for company size
+            const sizeVal = parseInt(calcEmployees.value) || 1;
+            riskScore += sizeVal * 10;
+
+            // Compliance requirements
+            let checkedComplianceCount = 0;
+            complianceCheckboxes.forEach(cb => {
+                if (cb.checked) checkedComplianceCount++;
+            });
+            riskScore += checkedComplianceCount * 8;
+
+            // Current maturity impact
+            if (calcMaturity.value === 'basic') riskScore += 20;
+            if (calcMaturity.value === 'moderate') riskScore += 5;
+            if (calcMaturity.value === 'advanced') riskScore -= 15;
+
+            // Clamp score between 15% and 95%
+            riskScore = Math.min(Math.max(riskScore, 15), 95);
+
+            riskProgressBar.style.width = riskScore + '%';
+
+            // Update Labels & Models
+            if (riskScore < 45) {
+                riskLabel.textContent = 'LOW TO MODERATE RISK';
+                riskLabel.className = 'text-emerald-400 font-bold';
+                recommendedModel.textContent = 'Strategic Advisory Plan';
+                auditTime.textContent = '30 - 60 Days';
+                costSavings.textContent = '~$250,000 / year';
+                calcRecommendationText.textContent = 'Your security risk profile is manageable. Strategic advisory hours will maintain your baseline and address targeted vendor questionnaires efficiently.';
+            } else if (riskScore < 75) {
+                riskLabel.textContent = 'MODERATE TO HIGH RISK';
+                riskLabel.className = 'text-amber-400 font-bold';
+                recommendedModel.textContent = 'Fractional vCSO Plan';
+                auditTime.textContent = '60 - 90 Days';
+                costSavings.textContent = '~$210,000 / year';
+                calcRecommendationText.textContent = 'Your compliance demands (SOC 2 / ISO) require dedicated executive oversight to construct evidence frameworks and manage auditor discussions.';
+            } else {
+                riskLabel.textContent = 'CRITICAL GOVERNANCE NEED';
+                riskLabel.className = 'text-red-400 font-bold';
+                recommendedModel.textContent = 'Enterprise Cyber Governance';
+                auditTime.textContent = '90 - 120 Days';
+                costSavings.textContent = '~$180,000 / year';
+                calcRecommendationText.textContent = 'High exposure and strict multi-regulatory demands require an embedded Virtual CISO & vCIO team to build end-to-end security governance and risk controls.';
+            }
+        }
+
+        if (calcEmployees) calcEmployees.addEventListener('change', updateRiskCalculator);
+        if (calcMaturity) calcMaturity.addEventListener('change', updateRiskCalculator);
+        if (calcBudget) calcBudget.addEventListener('change', updateRiskCalculator);
+        complianceCheckboxes.forEach(cb => cb.addEventListener('change', updateRiskCalculator));
+
+        // Security Assessment Checklist Calculation Logic
+        const auditCheckboxes = document.querySelectorAll('.audit-checkbox');
+        const auditScoreText = document.getElementById('auditScoreText');
+        const auditMaturityRating = document.getElementById('auditMaturityRating');
+
+        function updateAuditScore() {
+            let score = 0;
+            auditCheckboxes.forEach(cb => {
+                if (cb.checked) {
+                    score += parseInt(cb.getAttribute('data-score')) || 0;
+                }
+            });
+
+            // Convert max score to percentage (out of 120 max possible points mapped to 100%)
+            let scorePercentage = Math.min(Math.round((score / 120) * 100), 100);
+            auditScoreText.textContent = scorePercentage + '%';
+
+            if (scorePercentage < 40) {
+                auditMaturityRating.textContent = 'Critical Gaps Identified';
+                auditMaturityRating.className = 'text-lg font-bold text-red-400';
+            } else if (scorePercentage < 80) {
+                auditMaturityRating.textContent = 'Moderate Security Maturity';
+                auditMaturityRating.className = 'text-lg font-bold text-amber-400';
+            } else {
+                auditMaturityRating.textContent = 'High Cyber Resilience';
+                auditMaturityRating.className = 'text-lg font-bold text-emerald-400';
+            }
+        }
+
+        auditCheckboxes.forEach(cb => cb.addEventListener('change', updateAuditScore));
+
+        // Consultation Form Submit Simulation
+        const consultationForm = document.getElementById('consultationForm');
+        const formStatusMessage = document.getElementById('formStatusMessage');
+
+        if (consultationForm) {
+            consultationForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                formStatusMessage.classList.remove('hidden', 'bg-red-900/50', 'text-red-300');
+                formStatusMessage.classList.add('bg-emerald-950', 'border', 'border-emerald-800', 'text-emerald-400');
+                formStatusMessage.textContent = 'Thank you! Your consultation request has been received. A Senior Principal vCSO will reach out within 4 business hours under mutual NDA.';
+                consultationForm.reset();
+            });
+        }
+    </script>
+</body>
+</html>
